@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Breathe Easy: Respiratory System Explorer</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1><i class="fas fa-lungs"></i> Breathe Easy</h1>
+            <p>Exploring the Human Respiratory System</p>
+        </div>
+    </header>
+
+    <nav>
+        <div class="container">
+            <ul>
+                <li><a href="#overview" class="active"><i class="fas fa-home"></i> Overview</a></li>
+                <li><a href="#anatomy"><i class="fas fa-lungs"></i> Anatomy</a></li>
+                <li><a href="#process"><i class="fas fa-wind"></i> Breathing Process</a></li>
+                <li><a href="#quiz"><i class="fas fa-question-circle"></i> Quiz</a></li>
+                <li><a href="#resources"><i class="fas fa-book"></i> Resources</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main class="container">
+    <section id="anatomy" class="content-section">
+        <h2>Respiratory System Anatomy</h2>
+        
+        <div class="anatomy-viewer-container">
+            <div class="viewer-options">
+                <button class="interactive-btn" id="viewFullSystem">Full System</button>
+                <button class="interactive-btn" id="viewUpperRespiratory">Upper Respiratory</button>
+                <button class="interactive-btn" id="viewLungs">Lungs & Alveoli</button>
+                <button class="interactive-btn" id="rotateModel">Auto-Rotate</button>
+                <button class="interactive-btn" id="resetView">Reset View</button>
+            </div>
+            
+            <div id="3d-model-container">
+                <div id="loading-model">
+                    <div class="spinner"></div>
+                    <p>Loading 3D model...</p>
+                </div>
+                <canvas id="respiratory-3d-model"></canvas>
+            </div>
+            
+            <div class="model-info">
+                <h3 id="model-title">Respiratory System Overview</h3>
+                <p id="model-description">This 3D model shows the complete human respiratory system. Use your mouse to rotate, scroll to zoom, and right-click to pan.</p>
+                <div class="part-info" id="part-info">
+                    <h4>Selected Part: <span id="selected-part">None</span></h4>
+                    <p id="part-details">Click on any part of the model to learn more about it.</p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Keep the 2D diagram as fallback -->
+        <div class="interactive-diagram">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Respiratory_system_complete_en.svg" alt="Respiratory System Diagram" id="respiratoryImg" usemap="#respiratoryMap">
+                <map name="respiratoryMap">
+                    <area shape="rect" coords="150,100,250,150" alt="Nose" title="Nose" data-info="nose">
+                    <area shape="rect" coords="150,160,250,200" alt="Pharynx" title="Pharynx" data-info="pharynx">
+                    <area shape="rect" coords="150,210,250,250" alt="Larynx" title="Larynx" data-info="larynx">
+                    <area shape="rect" coords="150,260,250,300" alt="Trachea" title="Trachea" data-info="trachea">
+                    <area shape="circle" coords="350,300,50" alt="Lungs" title="Lungs" data-info="lungs">
+                    <area shape="circle" coords="300,350,30" alt="Bronchi" title="Bronchi" data-info="bronchi">
+                    <area shape="circle" coords="400,350,30" alt="Bronchioles" title="Bronchioles" data-info="bronchioles">
+                    <area shape="circle" coords="350,400,20" alt="Alveoli" title="Alveoli" data-info="alveoli">
+                    <area shape="rect" coords="150,350,250,400" alt="Diaphragm" title="Diaphragm" data-info="diaphragm">
+                </map>
+                <div class="anatomy-info" id="anatomyInfo">
+                    <h3 id="partTitle">Click on a part to learn more</h3>
+                    <p id="partDescription">Select any highlighted area in the diagram to see detailed information about that part of the respiratory system.</p>
+                    <div class="part-fun-fact" id="partFunFact"></div>
+                </div>
+            </div>
+        </section>
+
+        <section id="process" class="content-section">
+            <h2>Breathing Process</h2>
+            <div class="process-steps">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <h3>Inhalation</h3>
+                    <p>The diaphragm contracts and moves downward, while the intercostal muscles between the ribs contract, causing the rib cage to expand. This creates more space in the chest cavity, allowing air to rush into the lungs.</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <h3>Gas Exchange</h3>
+                    <p>In the alveoli, oxygen diffuses into the blood while carbon dioxide diffuses from the blood into the alveoli. This exchange occurs due to differences in partial pressures.</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <h3>Exhalation</h3>
+                    <p>The diaphragm relaxes and moves upward, while the intercostal muscles relax, causing the rib cage to contract. This decreases space in the chest cavity, forcing air out of the lungs.</p>
+                </div>
+            </div>
+            
+            <div class="simulation-container">
+                <h3>Breathing Simulation</h3>
+                <div class="simulation">
+                    <div class="lungs" id="lungsSim">
+                        <div class="alveoli-cluster"></div>
+                        <div class="alveoli-cluster"></div>
+                        <div class="alveoli-cluster"></div>
+                    </div>
+                    <div class="diaphragm" id="diaphragmSim"></div>
+                </div>
+                <button class="interactive-btn" id="breatheSimBtn">Start Breathing Simulation</button>
+                <div class="oxygen-level">
+                    <label for="oxygenMeter">Oxygen Level:</label>
+                    <progress id="oxygenMeter" value="50" max="100"></progress>
+                    <span id="oxygenValue">50%</span>
+                </div>
+            </div>
+        </section>
+
+        <section id="quiz" class="content-section">
+            <h2>Test Your Knowledge</h2>
+            <div class="quiz-container">
+                <div id="quizProgress">Question 1 of 5</div>
+                <div id="quizQuestion">Loading questions...</div>
+                <div class="quiz-options" id="quizOptions"></div>
+                <button class="interactive-btn" id="nextQuestionBtn" disabled>Next Question</button>
+                <div id="quizResult"></div>
+            </div>
+        </section>
+
+        <section id="resources" class="content-section">
+            <h2>Additional Resources</h2>
+            <div class="resources-grid">
+                <div class="resource-card">
+                    <h3><i class="fas fa-book-open"></i> Textbooks</h3>
+                    <ul>
+                        <li>Human Anatomy & Physiology by Elaine Marieb</li>
+                        <li>Principles of Anatomy and Physiology by Tortora</li>
+                        <li>The Respiratory System at a Glance by Ward and Ward</li>
+                    </ul>
+                </div>
+                <div class="resource-card">
+                    <h3><i class="fas fa-globe"></i> Websites</h3>
+                    <ul>
+                        <li><a href="https://www.khanacademy.org/science/biology/human-biology" target="_blank">Khan Academy - Human Biology</a></li>
+                        <li><a href="https://www.innerbody.com/anatomy/respiratory" target="_blank">InnerBody - Respiratory System</a></li>
+                        <li><a href="https://www.getbodysmart.com/respiratory-system" target="_blank">GetBodySmart</a></li>
+                    </ul>
+                </div>
+                <div class="resource-card">
+                    <h3><i class="fas fa-video"></i> Videos</h3>
+                    <ul>
+                        <li><a href="https://www.youtube.com/watch?v=8NUxvJS-_0k" target="_blank">Crash Course - Respiratory System</a></li>
+                        <li><a href="https://www.youtube.com/watch?v=HiT621PrrO0" target="_blank">How Lungs Work</a></li>
+                        <li><a href="https://www.youtube.com/watch?v=0fVoz4V75_E" target="_blank">Alveoli Structure</a></li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2023 Breathe Easy - Respiratory System Education</p>
+            <p>Created for Biology Students</p>
+            <div class="social-links">
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-facebook"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-youtube"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-rwdImageMaps/1.6/jquery.rwdImageMaps.min.js"></script>
+    <script src="script.js"></script>
+    <script src="3d-model.js"></script>
+</body>
+</html>
