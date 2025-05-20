@@ -1,93 +1,503 @@
-/* Add these new styles to your existing CSS file */
+/* Global Styles */
+:root {
+    --primary-color: #3498db;
+    --secondary-color: #2ecc71;
+    --dark-color: #2c3e50;
+    --light-color: #ecf0f1;
+    --danger-color: #e74c3c;
+    --warning-color: #f39c12;
+}
 
-/* 3D Model Viewer Styles */
-.anatomy-viewer-container {
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+    color: #333;
+    background-color: #f5f5f5;
+}
+
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* Header Styles */
+header {
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    color: white;
+    padding: 2rem 0;
+    text-align: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+header h1 {
+    font-size: 2.5rem;
+    margin-bottom: 0.5rem;
+}
+
+header p {
+    font-size: 1.2rem;
+    opacity: 0.9;
+}
+
+/* Navigation */
+nav {
+    background-color: var(--dark-color);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+nav ul {
+    display: flex;
+    list-style: none;
+    justify-content: space-around;
+    padding: 1rem 0;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    font-weight: 500;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    transition: all 0.3s ease;
+}
+
+nav a:hover, nav a.active {
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+/* Content Sections */
+.content-section {
+    background-color: white;
     margin: 2rem 0;
-    background: #f8f9fa;
-    padding: 1.5rem;
+    padding: 2rem;
     border-radius: 8px;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
 }
 
-.viewer-options {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.5rem;
-    margin-bottom: 1rem;
+.content-section h2 {
+    color: var(--primary-color);
+    margin-bottom: 1.5rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid var(--light-color);
 }
 
-#3d-model-container {
+/* Interactive Elements */
+.interactive-btn {
+    background-color: var(--secondary-color);
+    color: white;
+    border: none;
+    padding: 0.8rem 1.5rem;
+    font-size: 1rem;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin: 1rem 0;
+    display: inline-block;
+}
+
+.interactive-btn:hover {
+    background-color: #27ae60;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Video Container */
+.video-container {
     position: relative;
-    width: 100%;
-    height: 500px;
-    background: #e9ecef;
-    border-radius: 8px;
+    padding-bottom: 56.25%;
+    height: 0;
     overflow: hidden;
+    margin: 1.5rem 0;
 }
 
-#respiratory-3d-model {
-    width: 100%;
-    height: 100%;
-    display: block;
-}
-
-#loading-model {
+.video-container iframe {
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    background: rgba(0, 0, 0, 0.5);
-    color: white;
-    z-index: 10;
-}
-
-.spinner {
-    width: 40px;
-    height: 40px;
-    border: 4px solid rgba(255, 255, 255, 0.3);
-    border-radius: 50%;
-    border-top-color: white;
-    animation: spin 1s ease-in-out infinite;
-    margin-bottom: 1rem;
-}
-
-@keyframes spin {
-    to { transform: rotate(360deg); }
-}
-
-.model-info {
-    margin-top: 1.5rem;
-    background: white;
-    padding: 1.5rem;
     border-radius: 8px;
 }
 
-.part-info {
-    margin-top: 1rem;
+/* Fun Fact Box */
+.fun-fact {
+    background-color: #f8f9fa;
+    border-left: 4px solid var(--warning-color);
     padding: 1rem;
-    background: #e3f2fd;
+    margin: 1.5rem 0;
+    border-radius: 0 4px 4px 0;
+}
+
+.fun-fact h3 {
+    color: var(--warning-color);
+    margin-bottom: 0.5rem;
+}
+
+/* Breath Animation */
+.breath-animation {
+    width: 100px;
+    height: 100px;
+    background-color: var(--primary-color);
+    border-radius: 50%;
+    margin: 1rem auto;
+    opacity: 0;
+    transition: all 4s ease-in-out;
+}
+
+/* Interactive Diagram */
+.interactive-diagram {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 2rem 0;
+}
+
+.interactive-diagram img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.anatomy-info {
+    background-color: #f8f9fa;
+    padding: 1.5rem;
+    border-radius: 8px;
+    margin-top: 1.5rem;
+    width: 100%;
+    border: 1px solid #ddd;
+}
+
+.anatomy-info h3 {
+    color: var(--primary-color);
+    margin-bottom: 0.5rem;
+}
+
+.part-fun-fact {
+    background-color: #e3f2fd;
+    padding: 0.8rem;
+    margin-top: 1rem;
     border-radius: 4px;
     border-left: 3px solid var(--primary-color);
 }
 
-/* Responsive adjustments */
+/* Process Steps */
+.process-steps {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+    margin: 2rem 0;
+}
+
+.step {
+    background-color: #f8f9fa;
+    padding: 1.5rem;
+    border-radius: 8px;
+    position: relative;
+    transition: transform 0.3s ease;
+}
+
+.step:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.step-number {
+    position: absolute;
+    top: -15px;
+    left: -15px;
+    background-color: var(--primary-color);
+    color: white;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 1.2rem;
+}
+
+.step h3 {
+    color: var(--dark-color);
+    margin-bottom: 0.5rem;
+    padding-left: 30px;
+}
+
+/* Breathing Simulation */
+.simuation-container {
+    margin: 2rem 0;
+}
+
+.simulation {
+    position: relative;
+    height: 300px;
+    background-color: #f0f8ff;
+    border-radius: 8px;
+    margin: 1.5rem 0;
+    overflow: hidden;
+}
+
+.lungs {
+    position: absolute;
+    width: 200px;
+    height: 150px;
+    background-color: #e6f7ff;
+    border-radius: 100px 100px 60px 60px;
+    top: 50px;
+    left: 50%;
+    transform: translateX(-50%);
+    transition: all 2s ease-in-out;
+}
+
+.alveoli-cluster {
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    background-color: #b3e0ff;
+    border-radius: 50%;
+}
+
+.alveoli-cluster:nth-child(1) {
+    top: 30px;
+    left: 40px;
+}
+
+.alveoli-cluster:nth-child(2) {
+    top: 60px;
+    right: 50px;
+}
+
+.alveoli-cluster:nth-child(3) {
+    bottom: 30px;
+    left: 80px;
+}
+
+.diaphragm {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 30px;
+    background-color: #cce6ff;
+    border-radius: 0 0 8px 8px;
+    transition: all 2s ease-in-out;
+}
+
+.oxygen-level {
+    margin-top: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+progress {
+    flex-grow: 1;
+    height: 20px;
+    border-radius: 10px;
+}
+
+progress::-webkit-progress-bar {
+    background-color: #f0f0f0;
+    border-radius: 10px;
+}
+
+progress::-webkit-progress-value {
+    background-color: var(--secondary-color);
+    border-radius: 10px;
+}
+
+/* Quiz Styles */
+.quiz-container {
+    background-color: #f8f9fa;
+    padding: 2rem;
+    border-radius: 8px;
+    margin: 2rem 0;
+}
+
+#quizProgress {
+    font-weight: bold;
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+}
+
+#quizQuestion {
+    font-size: 1.2rem;
+    margin-bottom: 1.5rem;
+}
+
+.quiz-options {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.quiz-option {
+    background-color: white;
+    padding: 1rem;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    border: 1px solid #ddd;
+}
+
+.quiz-option:hover {
+    background-color: #f0f0f0;
+}
+
+.quiz-option.selected {
+    background-color: var(--primary-color);
+    color: white;
+    border-color: var(--primary-color);
+}
+
+.quiz-option.correct {
+    background-color: var(--secondary-color);
+    color: white;
+    border-color: var(--secondary-color);
+}
+
+.quiz-option.incorrect {
+    background-color: var(--danger-color);
+    color: white;
+    border-color: var(--danger-color);
+}
+
+#quizResult {
+    margin-top: 1.5rem;
+    font-weight: bold;
+    font-size: 1.2rem;
+    text-align: center;
+    min-height: 2rem;
+}
+
+/* Resources Grid */
+.resources-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+    margin: 2rem 0;
+}
+
+.resource-card {
+    background-color: #f8f9fa;
+    padding: 1.5rem;
+    border-radius: 8px;
+    transition: transform 0.3s ease;
+}
+
+.resource-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.resource-card h3 {
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.resource-card ul {
+    list-style: none;
+}
+
+.resource-card li {
+    margin-bottom: 0.8rem;
+    padding-left: 1.5rem;
+    position: relative;
+}
+
+.resource-card li:before {
+    content: "•";
+    color: var(--primary-color);
+    position: absolute;
+    left: 0;
+}
+
+.resource-card a {
+    color: var(--dark-color);
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+.resource-card a:hover {
+    color: var(--primary-color);
+    text-decoration: underline;
+}
+
+/* Footer */
+footer {
+    background-color: var(--dark-color);
+    color: white;
+    padding: 2rem 0;
+    text-align: center;
+}
+
+footer p {
+    margin-bottom: 0.5rem;
+}
+
+.social-links {
+    margin-top: 1rem;
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+}
+
+.social-links a {
+    color: white;
+    font-size: 1.5rem;
+    transition: color 0.3s ease;
+}
+
+.social-links a:hover {
+    color: var(--primary-color);
+}
+
+/* Responsive Design */
 @media (max-width: 768px) {
-    #3d-model-container {
-        height: 400px;
+    nav ul {
+        flex-direction: column;
+        align-items: center;
     }
     
-    .viewer-options {
-        justify-content: center;
+    nav li {
+        margin-bottom: 0.5rem;
+    }
+    
+    .process-steps {
+        grid-template-columns: 1fr;
+    }
+    
+    .resources-grid {
+        grid-template-columns: 1fr;
     }
 }
 
 @media (max-width: 480px) {
-    #3d-model-container {
-        height: 300px;
+    header h1 {
+        font-size: 2rem;
+    }
+    
+    header p {
+        font-size: 1rem;
+    }
+    
+    .content-section {
+        padding: 1.5rem;
     }
 }
