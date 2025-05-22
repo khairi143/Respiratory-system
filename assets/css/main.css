@@ -1,0 +1,67 @@
+/**
+ * Main stylesheet for Respiratory System Explorer
+ * Imports all component and utility styles
+ */
+
+/* Utilities - Load first */
+@import url('./utilities/variables.css');
+@import url('./utilities/reset.css');
+@import url('./utilities/responsive.css');
+
+/* Component styles */
+@import url('./components/header.css');
+@import url('./components/navigation.css');
+@import url('./components/content-sections.css');
+@import url('./components/interactive-elements.css');
+@import url('./components/anatomy-diagram.css');
+@import url('./components/breathing-simulation.css');
+@import url('./components/quiz.css');
+@import url('./components/footer.css');
+
+/* Additional animations and effects */
+.animate-in {
+    animation: fadeInUp 0.6s ease-out;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Error states */
+.init-error {
+    background-color: var(--danger-color);
+    color: var(--white);
+    padding: var(--spacing-lg);
+    margin: var(--spacing-md);
+    border-radius: var(--radius-md);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.init-error h3 {
+    margin-bottom: var(--spacing-sm);
+}
+
+.init-error details {
+    margin-top: var(--spacing-md);
+}
+
+.init-error summary {
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.init-error pre {
+    background-color: rgba(0, 0, 0, 0.2);
+    padding: var(--spacing-sm);
+    border-radius: var(--radius-sm);
+    overflow-x: auto;
+    font-size: var(--font-size-small);
+    margin-top: var(--spacing-sm);
+}

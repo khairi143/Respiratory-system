@@ -1,0 +1,158 @@
+/**
+ * Content sections styles
+ */
+
+.content-section {
+    background-color: var(--white);
+    margin: var(--spacing-xl) 0;
+    padding: var(--spacing-xxl);
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-light);
+    position: relative;
+    overflow: hidden;
+}
+
+.content-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+}
+
+.content-section h2 {
+    color: var(--primary-color);
+    margin-bottom: var(--spacing-lg);
+    padding-bottom: var(--spacing-sm);
+    border-bottom: 2px solid var(--light-color);
+    font-size: var(--font-size-xxl);
+    font-weight: 600;
+    position: relative;
+}
+
+.content-section h2::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 60px;
+    height: 2px;
+    background-color: var(--secondary-color);
+}
+
+.content-section h3 {
+    color: var(--dark-color);
+    margin-bottom: var(--spacing-md);
+    font-size: var(--font-size-xl);
+    font-weight: 600;
+}
+
+.content-section p {
+    line-height: 1.7;
+    margin-bottom: var(--spacing-md);
+    color: #555;
+}
+
+.content-section ul {
+    margin-bottom: var(--spacing-md);
+}
+
+.content-section li {
+    margin-bottom: var(--spacing-sm);
+    line-height: 1.6;
+}
+
+/* 3D Model containers */
+.model-container {
+    margin: var(--spacing-xl) 0;
+}
+
+.model-container h3 {
+    text-align: center;
+    margin-bottom: var(--spacing-lg);
+    color: var(--primary-color);
+}
+
+.sketchfab-embed-wrapper {
+    position: relative;
+    padding-bottom: 56.25%;
+    height: 0;
+    overflow: hidden;
+    max-width: 100%;
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-medium);
+    margin-bottom: var(--spacing-lg);
+}
+
+.sketchfab-embed-wrapper iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: var(--radius-md);
+}
+
+.sketchfab-embed-wrapper + p {
+    font-size: var(--font-size-small);
+    text-align: center;
+    color: #666;
+    margin-top: var(--spacing-sm);
+}
+
+.sketchfab-embed-wrapper + p a {
+    color: #1CAAD9;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.sketchfab-embed-wrapper + p a:hover {
+    text-decoration: underline;
+}
+
+/* Simulation container */
+.simulation-container {
+    background: linear-gradient(135deg, #f0f8ff, #e6f7ff);
+    padding: var(--spacing-xl);
+    border-radius: var(--radius-md);
+    margin: var(--spacing-xl) 0;
+    border: 1px solid rgba(52, 152, 219, 0.2);
+}
+
+.simulation-container h3 {
+    text-align: center;
+    margin-bottom: var(--spacing-lg);
+    color: var(--primary-color);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .content-section {
+        padding: var(--spacing-xl);
+        margin: var(--spacing-lg) 0;
+    }
+    
+    .content-section h2 {
+        font-size: var(--font-size-xl);
+    }
+    
+    .simulation-container {
+        padding: var(--spacing-lg);
+    }
+}
+
+@media (max-width: 480px) {
+    .content-section {
+        padding: var(--spacing-lg);
+    }
+    
+    .content-section h2 {
+        font-size: var(--font-size-large);
+    }
+    
+    .content-section h3 {
+        font-size: var(--font-size-large);
+    }
+}
